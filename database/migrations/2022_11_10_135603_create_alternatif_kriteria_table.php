@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rel_kriteria', function (Blueprint $table) {
+        Schema::create('alternatif_kriteria', function (Blueprint $table) {
             $table->id();
-            $table->string('users_id');
-            $table->string('kode_kriteria');
-            $table->string('nama_kriteria');
-            $table->integer('bobot');
+            
+            $table->unsignedBigInteger('alternatif_id');
+            $table->unsignedBigInteger('kriteria_id');
+            $table->integer('nilai');
+            $table->double('normalisasi_matriks')->nullable();
+            $table->double('normalisasi_bobot')->nullable();
+
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rel_kriteria');
+        Schema::dropIfExists('alternatif_kriteria');
     }
 };

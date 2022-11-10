@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alternatif extends Model
+class AlternatifKriteria extends Model
 {
     use HasFactory;
-    protected $table = 'alternatif';
+    protected $table = 'alternatif_kriteria';
+
+    
 }

@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alternates', function (Blueprint $table) {
+        Schema::create('sub_kriteria', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_kriteria')->nullable();
-            $table->string('kode_alternatif')->nullable();
-            $table->string('kode_crips')->nullable();
+            
+            $table->unsignedBigInteger('kriteria_id');
+            $table->integer('score');
+            $table->string('nama');
+
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alternates');
+        Schema::dropIfExists('sub_kriteria');
     }
 };

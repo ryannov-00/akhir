@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaptopController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\AlternatifKriteriaController;
 use App\Http\Controllers\CripsController;
+use App\Http\Controllers\PerhitunganController;
+use App\Http\Controllers\SubKriteriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +33,20 @@ use App\Http\Controllers\CripsController;
 // Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy']);
 
 Route::resource('kriteria', KriteriaController::class);
-// Route::resource('laptop', LaptopController::class);
+Route::resource('sub-kriteria', SubKriteriaController::class);
 Route::resource('alternatif', AlternatifController::class);
-Route::resource('crips', CripsController::class);
-Route::resource('alternate', AlternateController::class);
+Route::resource('alternatif-kriteria', AlternatifKriteriaController::class);
+Route::get('perhitungan/index', [PerhitunganController::class, 'index'])->name('perhitungan.index');
+Route::get('perhitungan/test', [PerhitunganController::class, 'test'])->name('perhitungan.test');
+Route::get('perhitungan', [PerhitunganController::class, 'perhitungan']);
+// matriks normalisasi
+// normalisasi bobot
+// utility measure
+// regrate measure
+// total
+// ranking
+// Route::resource('crips', CripsController::class);
+// Route::resource('alternate', AlternateController::class);
 
 
 // Route::get('/laptop', [LaptopController::class, 'index']);

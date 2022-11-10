@@ -14,17 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('alternatif', function (Blueprint $table) {
-            $table->string('kode_alternatif')->primary();
-            $table->string('nama_alternatif');
+            $table->id();
+
+            $table->string('kode');
+            $table->string('nama');
             $table->string('deskripsi');
-            $table->integer('ranking');
-            $table->double('total');
+            $table->integer('ranking')->nullable();
+            $table->double('ri')->nullable();
+            $table->double('si')->nullable();
+            $table->double('qi')->nullable();
+            
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations.n
      *
      * @return void
      */

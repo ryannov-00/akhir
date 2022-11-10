@@ -31,8 +31,8 @@
                             @foreach ($kriteria as $k)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $k->kode_kriteria }}</td>
-                                <td>{{ $k->nama_kriteria }}</td>
+                                <td>{{ $k->kode }}</td>
+                                <td>{{ $k->nama }}</td>
                                 <td>{{ $k->atribut }}</td>
                                 <td>
                                     <div class="btn-group" role="group">

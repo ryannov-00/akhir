@@ -10,7 +10,7 @@ class Kriteria extends Model
 {
     use HasFactory;
     protected $table = 'kriteria';
-    protected $primaryKey = 'kode_kriteria';
-    public  $incrementing = false;
-    protected $guarded = '';
+    // protected $primaryKey = 'kode_kriteria';
+    // public  $incrementing = false;
+    // protected $guarded = '';
 }
