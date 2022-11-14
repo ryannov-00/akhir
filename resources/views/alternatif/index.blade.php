@@ -1,60 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Alternatif</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Alternatif</h2>
-                    </div>
+@extends('layouts.master')
+
+@section('content')
+    
+
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabel </span> Alternatif</h4>
+
+            <!-- Hoverable Table rows -->
+            <div class="card">
+                <h5 class="card-header"> 
+                    <a href="/alternatif/create" class="btn btn-primary">Tambah Alternatif</a> 
+                </h5>
+                <div class="table-responsive text-nowrap">
                     <div class="card-body">
-                    <a href="/alternatif/create" class="btn btn-primary">Tambah Alternatif</a>
-                        <table class="table table-hover table-bordered border-light">
+                        <table class="table table-hover table-borderless">
+                            <thead>
                             <tr>
-                                <td>NO</td>
-                                <td>KODE ALTERNATIF</td>
-                                <td>NAMA ALTERNATIF</td>
-                                <td>DESKRIPSI</td>
-                                {{-- <td>RANKING</td> --}}
-                                {{-- <td>TOTAL</td> --}}
-                                <td>AKSI</td>
+                                <th>No</th>
+                                <th>Kode Alternatif</th>
+                                <th>Nama Alternatif</th>
+                                <th>Deskripsi</th>
+                                <th>Aksi</th>
                             </tr>
+                            </thead>
                             @php
                             $no=1;
                             @endphp
                             @foreach ($alternatif as $a)
-                            <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $a->kode }}</td>
-                                <td>{{ $a->nama }}</td>
-                                <td>{{ $a->deskripsi }}</td>
-                                {{-- <td>{{ $a->ranking }}</td> --}}
-                                {{-- <td>{{ $a->si }}</td> --}}
+                                
+                            <tbody class="table-border-bottom-0">
+                                <tr>
+                                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $no++ }}</strong></td>
+                                    <td>{{ $a->kode }}</td>
+                                    <td>{{ $a->nama }}</td>
+                                    <td>{{ $a->deskripsi }}</td>
                                 <td>
-                                    <div class="btn-group" role="group">
-                                        <a class="btn btn-warning" href="/alternatif/{{ $a->kode_alternatif }}/edit">Edit</a>
-                                        <form  action="/alternatif/{{ $a->kode_alternatif }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <input class="btn btn-danger" type="submit" value="Delete">
-                                        </form>
+                                {{-- <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                    <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"
+                                        ><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"
+                                    ><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>
+                                </div> --}}
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="/alternatif/{{ $a->kode}}/edit">Edit</a>
+                                    <form  action="/alternatif/{{ $a->kode_alternatif }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <input class="btn btn-danger" type="submit" value="Delete">
+                                    </form>
+                                </div>
                                 </td>
                             </tr>
+                            </tbody>
                             @endforeach
                         </table>
                     </div>
                 </div>
             </div>
+            <!--/ Hoverable Table rows -->
+
         </div>
-    </div>
-</body>
-</html>
+        <!-- / Content -->
+
+@endsection

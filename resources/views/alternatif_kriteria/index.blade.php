@@ -1,30 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Kriteria</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Alternatif Kriteria</h2>
-                    </div>
+
+@extends('layouts.master')
+
+@section('content')
+    
+
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabel </span> Alternatif Kriteria</h4>
+
+            <!-- Hoverable Table rows -->
+            <div class="card">
+                <h5 class="card-header"> 
+                    <a href="/alternatif-kriteria/create" class="btn btn-primary">Tambah Alternatif Kriteria</a> 
+                </h5>
+                <div class="table-responsive text-nowrap">
                     <div class="card-body">
-                    <a href="/alternatif-kriteria/create" class="btn btn-primary">Tambah Alternatif Kriteria</a>
-                        <table class="table table-hover table-bordered border-light">
+                        <table class="table table-hover table-borderless">
+                            <thead>
                             <tr>
-                                <td>Alternatif</td>
+                                <th>Alternatif</th>
                                 @foreach($kriteria as $k)
-                                    <td>{{ $k->nama }}</td>
+                                    <th>{{ $k->nama }}</th>
                                 @endforeach
                             </tr>
-                            @foreach($alternatif as $key_a => $a)
+                            </thead>
+                            @php
+                            $no=1;
+                            @endphp
+                            @foreach ($alternatif as $key_a => $a)
+                                
+                            <tbody class="table-border-bottom-0">
                                 <tr>
                                     <td>{{ $a->nama }}</td>
                                     @foreach($kriteria as $key_k => $k)
@@ -39,13 +45,16 @@
                                             @endif
                                         @endforeach
                                     @endforeach
-                                </tr>
+                            </tr>
+                            </tbody>
                             @endforeach
                         </table>
                     </div>
                 </div>
             </div>
+            <!--/ Hoverable Table rows -->
+
         </div>
-    </div>
-</body>
-</html>
+        <!-- / Content -->
+
+@endsection

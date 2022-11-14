@@ -1,29 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Nilai Alternatif</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Perhitungan</h2>
-                    </div>
+@extends('layouts.master')
+
+@section('content')
+    
+
+        <!-- Content -->
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil </span> Perhitungan</h4>
+
+            <!-- Hoverable Table rows -->
+
+            <div class="card">
+                <h5 class="card-header"> 
+                    Alternatif
+                </h5>
+                <div class="table-responsive text-nowrap">
                     <div class="card-body">
-                        <table class="table table-hover table-bordered border-light">
+                        <table class="table table-hover table-borderless">
+                            <thead>
                             <tr>
-                                <td>Alternatif</td>
-                                @foreach($kriteria as $k)
-                                    <td>{{ $k->nama }}</td>
-                                @endforeach
+                                <tr>
+                                    <th>Alternatif</th>
+                                    @foreach($kriteria as $k)
+                                        <th>{{ $k->nama }}</th>
+                                    @endforeach
+                                </tr>
                             </tr>
+                            </thead>
+                            @php
+                            $no=1;
+                            @endphp
                             @foreach($alternatif as $key_a => $a)
+                    
+                            <tbody class="table-border-bottom-0">
                                 <tr>
                                     <td>{{ $a->nama }}</td>
                                     @foreach($kriteria as $key_k => $k)
@@ -34,16 +42,38 @@
                                         @endforeach
                                     @endforeach
                                 </tr>
+                            </tbody>
                             @endforeach
                         </table>
-                        <table class="table table-hover table-bordered border-light">
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-2" />
+
+            <div class="card">
+                <h5 class="card-header"> 
+                    Normalisasi Matriks
+                </h5>
+                <div class="table-responsive text-nowrap">
+                    <div class="card-body">
+                        <table class="table table-hover table-borderless">
+                            <thead>
                             <tr>
-                                <td>Alternatif</td>
-                                @foreach($kriteria as $k)
-                                    <td>{{ $k->nama }}</td>
-                                @endforeach
+                                <tr>
+                                    <th>Alternatif</th>
+                                    @foreach($kriteria as $k)
+                                        <th>{{ $k->nama }}</th>
+                                    @endforeach
+                                </tr>
                             </tr>
+                            </thead>
+                            @php
+                            $no=1;
+                            @endphp
                             @foreach($alternatif as $key_a => $a)
+                    
+                            <tbody class="table-border-bottom-0">
                                 <tr>
                                     <td>{{ $a->nama }}</td>
                                     @foreach($kriteria as $key_k => $k)
@@ -54,16 +84,38 @@
                                         @endforeach
                                     @endforeach
                                 </tr>
+                            </tbody>
                             @endforeach
                         </table>
-                        <table class="table table-hover table-bordered border-light">
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-2" />
+
+            <div class="card">
+                <h5 class="card-header"> 
+                    Normalisasi Bobot
+                </h5>
+                <div class="table-responsive text-nowrap">
+                    <div class="card-body">
+                        <table class="table table-hover table-borderless">
+                            <thead>
                             <tr>
-                                <td>Alternatif</td>
-                                @foreach($kriteria as $k)
-                                    <td>{{ $k->nama }}</td>
-                                @endforeach
+                                <tr>
+                                    <th>Alternatif</th>
+                                    @foreach($kriteria as $k)
+                                        <th>{{ $k->nama }}</th>
+                                    @endforeach
+                                </tr>
                             </tr>
+                            </thead>
+                            @php
+                            $no=1;
+                            @endphp
                             @foreach($alternatif as $key_a => $a)
+                    
+                            <tbody class="table-border-bottom-0">
                                 <tr>
                                     <td>{{ $a->nama }}</td>
                                     @foreach($kriteria as $key_k => $k)
@@ -74,35 +126,51 @@
                                         @endforeach
                                     @endforeach
                                 </tr>
-                            @endforeach
-                        </table>
-                        <table class="table table-hover table-bordered border-light">
-                            <tr>
-                                <td>NO</td>
-                                <td>KODE ALTERNATIF</td>
-                                <td>NAMA ALTERNATIF</td>
-                                <td>DESKRIPSI</td>
-                                <td>RANKING</td>
-                                <td>TOTAL</td>
-                            </tr>
-                            @php
-                            $no=1;
-                            @endphp
-                            @foreach ($alternatif as $a)
-                            <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $a->kode }}</td>
-                                <td>{{ $a->nama }}</td>
-                                <td>{{ $a->deskripsi }}</td>
-                                <td>{{ $a->ranking }}</td>
-                                <td>{{ $a->qi }}</td>
-                            </tr>
+                            </tbody>
                             @endforeach
                         </table>
                     </div>
                 </div>
             </div>
+
+            <hr class="my-2" />
+
+            <div class="card">
+                <h5 class="card-header"> 
+                    Hasil
+                </h5>
+                <div class="table-responsive text-nowrap">
+                    <div class="card-body">
+                        <table class="table table-hover table-borderless">
+                            <thead>
+                            <tr>
+                                <tr>
+                                    <th>Nama Alternatif</th>
+                                    <th>Ranking</th>
+                                    <th>Total</th>
+                                </tr>
+                            </tr>
+                            </thead>
+                            @php
+                            $no=1;
+                            @endphp
+                            @foreach ($alternatif as $a)
+                    
+                            <tbody class="table-border-bottom-0">
+                                <tr>
+                                    {{-- <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $no++ }}</strong></td> --}}
+                                    <td>{{ $a->nama }}</td>
+                                    <td>{{ $a->ranking }}</td>
+                                    <td>{{ $a->qi }}</td>
+                                </tr>
+                            </tbody>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!--/ Hoverable Table rows -->
         </div>
-    </div>
-</body>
-</html>
+        <!-- / Content -->
+@endsection

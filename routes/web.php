@@ -21,9 +21,9 @@ use App\Http\Controllers\SubKriteriaController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
 // Route::get('/kriteria', [KriteriaController::class, 'index']);
 // Route::get('/kriteria/create', [KriteriaController::class, 'create']);
