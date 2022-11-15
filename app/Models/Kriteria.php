@@ -13,4 +13,7 @@ class Kriteria extends Model
     // protected $primaryKey = 'kode_kriteria';
     // public  $incrementing = false;
     // protected $guarded = '';
+    public function subKriteria() {
+        return $this->hasMany(SubKriteria::class);
+    }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\AlternatifKriteriaController;
 use App\Http\Controllers\CripsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\SubKriteriaController;
 
@@ -21,9 +22,11 @@ use App\Http\Controllers\SubKriteriaController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+Route::post('filter', [HomeController::class, 'filter'])->name('filter');
 
 // Route::get('/kriteria', [KriteriaController::class, 'index']);
 // Route::get('/kriteria/create', [KriteriaController::class, 'create']);

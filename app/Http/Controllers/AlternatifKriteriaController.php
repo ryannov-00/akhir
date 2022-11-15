@@ -48,8 +48,22 @@ class AlternatifKriteriaController extends Controller
      */
     public function store(Request $request)
     {
-        $input = [];
-        dd($request->all());
+        // $hasil = [];
+        $alternatif = Alternatif::get();
+        $kriteria = Kriteria::get();
+        foreach($alternatif as $v_a) {
+            foreach($kriteria as $v_k) {
+                $input = 'input'.$v_a->id.'|'.$v_k->id;
+                $alternatifKriteria = AlternatifKriteria::where('kriteria_id', $v_k->id)->where('alternatif_id', $v_a->id)->first();
+                if(!$alternatifKriteria) {
+                    $alternatifKriteria = new AlternatifKriteria();
+                }
+                $alternatifKriteria->nilai = $request->$input;
+                $alternatifKriteria->save();
+                // $hasil[] = $request->$input;
+            }
+        }
+        return redirect()->route('alternatif-kriteria.index');
     }
 
     /**
