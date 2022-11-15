@@ -27,7 +27,7 @@ class PerhitunganController extends Controller
         PerhitunganController::ranking();
         
         $alternatifKriteria = AlternatifKriteria::get();
-        $alternatif = Alternatif::get();
+        $alternatif = Alternatif::orderBy('ranking', 'ASC')->get();
         $kriteria = Kriteria::get();
         $subKriteria = SubKriteria::get();
 
