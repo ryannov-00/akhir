@@ -48,11 +48,11 @@ class AlternatifKriteriaController extends Controller
      */
     public function store(Request $request)
     {
-        // $hasil = [];
         $alternatif = Alternatif::get();
         $kriteria = Kriteria::get();
-        foreach($alternatif as $v_a) {
-            foreach($kriteria as $v_k) {
+        foreach($kriteria as $v_k) {
+            $nilai = [];
+            foreach($alternatif as $v_a) {
                 $input = 'input'.$v_a->id.'|'.$v_k->id;
                 $alternatifKriteria = AlternatifKriteria::where('kriteria_id', $v_k->id)->where('alternatif_id', $v_a->id)->first();
                 if(!$alternatifKriteria) {
@@ -60,8 +60,14 @@ class AlternatifKriteriaController extends Controller
                 }
                 $alternatifKriteria->nilai = $request->$input;
                 $alternatifKriteria->save();
-                // $hasil[] = $request->$input;
+                $nilai[] = $request->$input;
             }
+            $min = min($nilai);
+            $max = max($nilai);
+            Kriteria::where('id', $v_k->id)->update([
+                'max' => $max,
+                'min' => $min
+            ]);
         }
         return redirect()->route('alternatif-kriteria.index');
     }
