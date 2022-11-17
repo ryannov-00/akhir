@@ -48,8 +48,8 @@
                                         </div>
                                     </div> --}}
                                     <div class="btn-group" role="group">
-                                        <a class="btn btn-warning" href="/alternatif/{{ $sk->kode}}/edit">Edit</a>
-                                        <form  action="/alternatif/{{ $sk->kode_alternatif }}" method="POST">
+                                        <a class="btn btn-warning" href="/sub-kriteria/{{ $sk->id}}/edit">Edit</a>
+                                        <form  action="/sub-kriteria/{{ $sk->id }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <input class="btn btn-danger" type="submit" value="Delete">

@@ -27,26 +27,23 @@
                                     <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
                                     <a class="btn btn-danger" href="/kriteria" >Kembali</a>
                                 </form>
-                                {{-- <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                                <p class="mb-4">
-                                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                                your profile.
-                                </p>
-
-                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a> --}}
                             </div>
                         </div>
-                        <div class="col-sm-5 text-center text-sm-left">
-                            <div class="card-body pb-0 px-0 px-md-4">
+                        
+                        <div class="card-body pb-0 px-0 px-md-4">
                                 @if($laptop == null)
                                     Kosong
                                 @else
-                                    <table>
+                                
+                                <table class="table table-hover table-borderless">
+                                        <thead>
                                         <tr>
-                                            <td>No</td>
-                                            <td>Nama</td>
-                                            <td>Ranking</td>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Ranking</th>
                                         </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0">
                                         @foreach($laptop as $key => $value) 
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
@@ -54,10 +51,11 @@
                                                 <td>{{ $value->ranking }}</td>
                                             </tr>
                                         @endforeach
+                                        </tbody>
+
                                     </table>
                                 @endif
-                            </div>
-                        </div>
+                        </div>                    
                     </div>
                 </div>
             </div>

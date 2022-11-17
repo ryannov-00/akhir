@@ -25,22 +25,22 @@ class KriteriaController extends Controller
         return redirect('/kriteria');
     }
 
-    public function edit($kode_kriteria)
+    public function edit($id)
     {
-        $kriteria = Kriteria::find($kode_kriteria);
+        $kriteria = Kriteria::find($id);
         return view('kriteria.edit', compact('kriteria'));
     }
 
-    public function update($kode_kriteria, Request $request)
+    public function update($kode, Request $request)
     {
-        $kriteria = Kriteria::find($kode_kriteria);
+        $kriteria = Kriteria::find($kode);
         $kriteria->update($request->except('_token', 'submit'));
         return redirect('/kriteria');
     }
 
-    public function destroy($kode_kriteria)
+    public function destroy($kode)
     {
-        $kriteria = Kriteria::find($kode_kriteria);
+        $kriteria = Kriteria::find($kode);
         $kriteria->delete();
         return redirect('/kriteria');
     }

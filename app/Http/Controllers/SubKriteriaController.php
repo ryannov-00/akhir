@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kriteria;
 use App\Models\SubKriteria;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubKriteriaRequest;
 use App\Http\Requests\UpdateSubKriteriaRequest;
 
@@ -27,7 +29,8 @@ class SubKriteriaController extends Controller
      */
     public function create()
     {
-        //
+        $kriteria = Kriteria::get();
+        return view('sub_kriteria.create', compact('kriteria'));
     }
 
     /**
@@ -81,8 +84,10 @@ class SubKriteriaController extends Controller
      * @param  \App\Models\SubKriteria  $subKriteria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubKriteria $subKriteria)
+    public function destroy($id)
     {
-        //
+        $subkriteria = SubKriteria::find($id);
+        $subkriteria->delete();
+        return redirect('/sub-kriteria');
     }
 }

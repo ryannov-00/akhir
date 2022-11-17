@@ -12,7 +12,7 @@
             <!-- Hoverable Table rows -->
             <div class="card">
                 <h5 class="card-header"> 
-                    <a href="/alternatif-kriteria/create" class="btn btn-primary">Tambah Alternatif Kriteria</a> 
+                    <a href="/alternatif-kriteria/create" class="btn btn-primary">Edit Alternatif Kriteria</a> 
                 </h5>
                 <div class="table-responsive text-nowrap">
                     <div class="card-body">
