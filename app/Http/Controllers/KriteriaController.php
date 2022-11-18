@@ -20,8 +20,14 @@ class KriteriaController extends Controller
 
     public function store(Request $request)
     {
-        Kriteria::create($request->except('_token', 'submit'));
-        // dd($request->except('_token', 'submit'));
+
+        $kriteria = new Kriteria;
+        $kriteria->kode = $request->kode;
+        $kriteria->nama = $request->nama;
+        $kriteria->atribut = $request->atribut;
+        $kriteria->bobot = $request->bobot;
+        $kriteria->save();
+
         return redirect('/kriteria');
     }
 
@@ -31,10 +37,15 @@ class KriteriaController extends Controller
         return view('kriteria.edit', compact('kriteria'));
     }
 
-    public function update($kode, Request $request)
+    public function update($id, Request $request, Kriteria $kriteria)
     {
-        $kriteria = Kriteria::find($kode);
-        $kriteria->update($request->except('_token', 'submit'));
+        $kriteria = Kriteria::find($id);
+        $kriteria->kode = $request->kode;
+        $kriteria->nama = $request->nama;
+        $kriteria->atribut = $request->atribut;
+        $kriteria->bobot = $request->bobot;
+        $kriteria->save();
+
         return redirect('/kriteria');
     }
 

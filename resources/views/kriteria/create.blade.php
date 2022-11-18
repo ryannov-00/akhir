@@ -9,13 +9,19 @@
             <div class="mb-3 row">
                 <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Kode Kriteria</label>
                 <div class="col-sm-10">
-                    <input type="text" name="kode_kriteria" class="form-control" id="exampleInputEmail1">
+                    <input type="text" name="kode" class="form-control" id="exampleInputEmail1">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Nama Kriteria</label>
                 <div class="col-sm-10">
-                    <input type="text" name="nama_kriteria" class="form-control" id="exampleInputEmail1">
+                    <input type="text" name="nama" class="form-control" id="exampleInputEmail1">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Bobot</label>
+                <div class="col-sm-10">
+                    <input type="text" name="bobot" class="form-control" id="exampleInputEmail1">
                 </div>
             </div>
             

@@ -39,9 +39,15 @@ class SubKriteriaController extends Controller
      * @param  \App\Http\Requests\StoreSubKriteriaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubKriteriaRequest $request)
+    public function store(Request $request)
     {
-        //
+        $subkriteria = new SubKriteria;
+        $subkriteria->kriteria_id = $request->kriteria_id;
+        $subkriteria->nama = $request->nama;
+        $subkriteria->score = $request->score;
+        $subkriteria->save();
+
+        return redirect('sub-kriteria');
     }
 
     /**
@@ -61,9 +67,11 @@ class SubKriteriaController extends Controller
      * @param  \App\Models\SubKriteria  $subKriteria
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubKriteria $subKriteria)
+    public function edit($id)
     {
-        //
+        $kriteria = Kriteria::get();
+        $subkriteria = SubKriteria::find($id);
+        return view('sub_kriteria.edit', compact('subkriteria', 'kriteria'));
     }
 
     /**
@@ -73,9 +81,15 @@ class SubKriteriaController extends Controller
      * @param  \App\Models\SubKriteria  $subKriteria
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubKriteriaRequest $request, SubKriteria $subKriteria)
+    public function update(Request $request, $id, SubKriteria $subkriteria)
     {
-        //
+        $subkriteria = SubKriteria::find($id);
+        $subkriteria->kriteria_id = $request->kriteria_id;
+        $subkriteria->nama = $request->nama;
+        $subkriteria->score = $request->score;
+        $subkriteria->update();
+
+        return redirect('sub-kriteria');
     }
 
     /**

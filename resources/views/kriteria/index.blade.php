@@ -50,7 +50,7 @@
                                 </div> --}}
                                 <div class="btn-group" role="group">
                                     <a class="btn btn-warning" href="/kriteria/{{ $k->id}}/edit">Edit</a>
-                                    <form  action="/kriteria/{{ $k->kode }}" method="POST">
+                                    <form  action="/kriteria/{{ $k->id }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <input class="btn btn-danger" type="submit" value="Delete">
