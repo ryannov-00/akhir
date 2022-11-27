@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alternatif;
-use App\Models\AlternatifKriteria;
 use App\Models\Kriteria;
+use App\Models\Alternatif;
+use App\Models\SubKriteria;
 use Illuminate\Http\Request;
+use App\Models\AlternatifKriteria;
+use App\Http\Controllers\Controller;
 
 class KriteriaController extends Controller
 {
@@ -28,9 +30,9 @@ class KriteriaController extends Controller
         $kriteria->atribut = $request->atribut;
         $kriteria->bobot = $request->bobot;
         $kriteria->save();
-        
+
         $alternatif = Alternatif::get();
-        foreach($alternatif as $v_alternatif) {
+        foreach ($alternatif as $v_alternatif) {
             AlternatifKriteria::insert([
                 'alternatif_id' => $v_alternatif->id,
                 'kriteria_id' => $kriteria->id,
@@ -59,9 +61,11 @@ class KriteriaController extends Controller
         return redirect('/kriteria');
     }
 
-    public function destroy($kode)
+    public function destroy($id)
     {
-        $kriteria = Kriteria::find($kode);
+        $kriteria = Kriteria::where('id', $id)->first();
+        SubKriteria::where('kriteria_id', $id)->delete();
+        AlternatifKriteria::where('kriteria_id', $id)->delete();
         $kriteria->delete();
         return redirect('/kriteria');
     }

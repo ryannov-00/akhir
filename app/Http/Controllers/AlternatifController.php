@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alternatif;
-use App\Models\AlternatifKriteria;
 use App\Models\Kriteria;
+use App\Models\Alternatif;
 use Illuminate\Http\Request;
+use App\Models\AlternatifKriteria;
+use App\Http\Controllers\Controller;
 
 class AlternatifController extends Controller
 {
@@ -45,7 +46,7 @@ class AlternatifController extends Controller
         $alternatif->save();
 
         $kriteria = Kriteria::get();
-        foreach($kriteria as $v_kriteria) {
+        foreach ($kriteria as $v_kriteria) {
             AlternatifKriteria::insert([
                 'alternatif_id' => $alternatif->id,
                 'kriteria_id' => $v_kriteria->id,
@@ -101,10 +102,17 @@ class AlternatifController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kode_alternatif)
+    public function destroy($id)
     {
-        $alternatif = Alternatif::find($kode_alternatif);
-        $alternatif->delete();
+        $alternatif = Alternatif::where('id', $id)->first();
+        AlternatifKriteria::where('alternatif_id', $id)->delete();
+
+        if ($alternatif != null) {
+            $alternatif->delete();
+            return redirect('/alternatif');
+        }
+        // $alternatif->delete();
+        // return redirect('/alternatif');
         return redirect('/alternatif');
     }
 }
