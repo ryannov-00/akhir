@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
+use App\Models\AlternatifKriteria;
+use App\Models\Kriteria;
 use Illuminate\Http\Request;
 
 class AlternatifController extends Controller
@@ -14,7 +16,7 @@ class AlternatifController extends Controller
      */
     public function index()
     {
-        $alternatif = Alternatif::all();
+        $alternatif = Alternatif::get();
         return view('alternatif.index', compact('alternatif'));
     }
 
@@ -36,7 +38,21 @@ class AlternatifController extends Controller
      */
     public function store(Request $request)
     {
-        Alternatif::create($request->except('_token', 'submit'));
+        $alternatif = new Alternatif();
+        $alternatif->kode = $request->kode;
+        $alternatif->nama = $request->nama;
+        $alternatif->deskripsi = '';
+        $alternatif->save();
+
+        $kriteria = Kriteria::get();
+        foreach($kriteria as $v_kriteria) {
+            AlternatifKriteria::insert([
+                'alternatif_id' => $alternatif->id,
+                'kriteria_id' => $v_kriteria->id,
+                'nilai' => 1,
+            ]);
+        }
+
         return redirect('/alternatif');
     }
 
@@ -57,9 +73,9 @@ class AlternatifController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($kode_alternatif)
+    public function edit($id)
     {
-        $alternatif = Alternatif::find($kode_alternatif);
+        $alternatif = Alternatif::find($id);
         return view('alternatif.edit', compact('alternatif'));
     }
 
@@ -70,10 +86,12 @@ class AlternatifController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $kode_alternatif)
+    public function update(Request $request, $id)
     {
-        $alternatif = Alternatif::find($kode_alternatif);
-        $alternatif->update($request->except('_token', 'submit'));
+        $alternatif = Alternatif::where('id', $id)->first();
+        $alternatif->kode = $request->kode;
+        $alternatif->nama = $request->nama;
+        $alternatif->save();
         return redirect('/alternatif');
     }
 

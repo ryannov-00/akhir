@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alternatif;
+use App\Models\AlternatifKriteria;
 use App\Models\Kriteria;
 use Illuminate\Http\Request;
 
@@ -20,13 +22,21 @@ class KriteriaController extends Controller
 
     public function store(Request $request)
     {
-
         $kriteria = new Kriteria;
         $kriteria->kode = $request->kode;
         $kriteria->nama = $request->nama;
         $kriteria->atribut = $request->atribut;
         $kriteria->bobot = $request->bobot;
         $kriteria->save();
+        
+        $alternatif = Alternatif::get();
+        foreach($alternatif as $v_alternatif) {
+            AlternatifKriteria::insert([
+                'alternatif_id' => $v_alternatif->id,
+                'kriteria_id' => $kriteria->id,
+                'nilai' => 1,
+            ]);
+        }
 
         return redirect('/kriteria');
     }
