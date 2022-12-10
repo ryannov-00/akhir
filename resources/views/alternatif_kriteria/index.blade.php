@@ -2,7 +2,7 @@
 @extends('layouts.master')
 
 @section('content')
-    
+@section ('title') {{ 'Alternatif-Kriteria' }} @endsection
 
         <!-- Content -->
 

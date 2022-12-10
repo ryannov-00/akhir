@@ -2,7 +2,7 @@
 @extends('layouts.master')
 
 @section('content')
-    
+@section ('title') {{ 'Edit Nilai' }} @endsection
 
         <!-- Content -->
 

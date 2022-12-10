@@ -40,7 +40,7 @@ class KriteriaController extends Controller
             ]);
         }
 
-        return redirect('/kriteria');
+        return redirect('/kriteria')->with('success', 'Data berhasil ditambah!');
     }
 
     public function edit($id)
@@ -58,7 +58,7 @@ class KriteriaController extends Controller
         $kriteria->bobot = $request->bobot;
         $kriteria->save();
 
-        return redirect('/kriteria');
+        return redirect('/kriteria')->with('success', 'Data berhasil diubah!');
     }
 
     public function destroy($id)
@@ -67,6 +67,6 @@ class KriteriaController extends Controller
         SubKriteria::where('kriteria_id', $id)->delete();
         AlternatifKriteria::where('kriteria_id', $id)->delete();
         $kriteria->delete();
-        return redirect('/kriteria');
+        return response()->json(['status' => 'Data berhasil dihapus!']);
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     
-
+@section ('title') {{ 'Alternatif' }} @endsection
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
@@ -32,6 +32,7 @@
                                 
                             <tbody class="table-border-bottom-0">
                                 <tr>
+                                    <input type="hidden" class="delete_id" value="{{ $a->id }}">
                                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $no++ }}</strong></td>
                                     <td>{{ $a->kode }}</td>
                                     <td>{{ $a->nama }}</td>
@@ -53,7 +54,7 @@
                                     <form  action="/alternatif/{{ $a->id }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <input class="btn btn-danger" type="submit" value="Delete">
+                                        <input class="btn btn-danger btndelete" type="submit" value="Delete">
                                     </form>
                                 </div>
                                 </td>
@@ -68,5 +69,56 @@
 
         </div>
         <!-- / Content -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+        
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+        
+                $('.btndelete').click(function (e) {
+                    e.preventDefault();
+        
+                    var deleteid = $(this).closest("tr").find('.delete_id').val();
+        
+                    swal({
+                            title: "Apakah anda yakin?",
+                            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+        
+                                var data = {
+                                    "_token": $('input[name=_token]').val(),
+                                    'id': deleteid,
+                                };
+                                $.ajax({
+                                    type: "DELETE",
+                                    url: 'alternatif/' + deleteid,
+                                    data: data,
+                                    success: function (response) {
+                                        swal(response.status, {
+                                                icon: "success",
+                                            })
+                                            .then((result) => {
+                                                location.reload();
+                                            });
+                                    }
+                                });
+                            }
+                        });
+                });
+        
+            });
+        
+        </script>
 
 @endsection

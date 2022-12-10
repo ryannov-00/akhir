@@ -16,16 +16,17 @@ class AlternatifSeeder extends Seeder
     public function run()
     {
         $alternatif = [
-            "ASUS TUF Gaming F15",
-            "ACER Swift 3x SF314",
-            "HP 14s - dq2053TU",
-            "Lenovo Thinkbook 14 G2",
-            "MSI GF63 Thin 11SC",
+            "Asus VivoBook 15 A516MAO-FHD423",
+            "Acer Aspire 3 A314-35-C03Y",
+            "Lenovo IdeaPad Slim 3 14IGL05",
+            "HP 14s-fq0591AU",
+            "MSI Modern 14 C11M",
+            "DELL Vostro V3515-R53450U-8-512-U-W11-F-OH",
         ];
-        foreach($alternatif as $key => $value) {
-            $no = $key+1;
+        foreach ($alternatif as $key => $value) {
+            $no = $key + 1;
             Alternatif::insert([
-                'kode' => 'A'.$no,
+                'kode' => 'A' . $no,
                 'nama' => $value,
                 'deskripsi' => "-"
             ]);

@@ -47,7 +47,7 @@ class SubKriteriaController extends Controller
         $subkriteria->score = $request->score;
         $subkriteria->save();
 
-        return redirect('sub-kriteria');
+        return redirect('sub-kriteria')->with('success', 'Data berhasil ditambah!');
     }
 
     /**
@@ -89,7 +89,7 @@ class SubKriteriaController extends Controller
         $subkriteria->score = $request->score;
         $subkriteria->update();
 
-        return redirect('sub-kriteria');
+        return redirect('sub-kriteria')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -102,6 +102,6 @@ class SubKriteriaController extends Controller
     {
         $subkriteria = SubKriteria::find($id);
         $subkriteria->delete();
-        return redirect('/sub-kriteria');
+        return response()->json(['status' => 'Data berhasil dihapus!']);
     }
 }

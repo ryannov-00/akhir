@@ -1,6 +1,7 @@
 
 @extends('layouts.master')
 @section('content')
+@section ('title') {{ 'Edit Sub-Kriteria' }} @endsection
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tambah </span> Sub Kriteria</h4>
 

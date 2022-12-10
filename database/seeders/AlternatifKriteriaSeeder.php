@@ -16,20 +16,21 @@ class AlternatifKriteriaSeeder extends Seeder
     public function run()
     {
         $data = [
-            [4, 3, 4, 2, 3, 3],
-            [4, 3, 4, 1, 3, 4],
-            [4, 3, 2, 1, 3, 4],
-            [5, 2, 2, 1, 2, 4],
-            [4, 3, 4, 2, 3, 4],
+            [5, 1, 2, 5, 2, 1],
+            [5, 1, 2, 4, 2, 1],
+            [5, 1, 2, 4, 2, 1],
+            [4, 1, 2, 4, 2, 1],
+            [4, 2, 3, 4, 2, 1],
+            [4, 2, 3, 5, 3, 2],
         ];
         foreach ($data as $key_a => $value) {
             $no_key_a = $key_a + 1;
-            foreach($value as $key_k => $nilai) {
+            foreach ($value as $key_k => $nilai) {
                 $no_key_k = $key_k + 1;
-                AlternatifKriteria::insert([        
-                        'alternatif_id' => $no_key_a,
-                        'kriteria_id' => $no_key_k,
-                        'nilai' => $nilai
+                AlternatifKriteria::insert([
+                    'alternatif_id' => $no_key_a,
+                    'kriteria_id' => $no_key_k,
+                    'nilai' => $nilai
                 ]);
             }
         }

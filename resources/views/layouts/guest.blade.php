@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>SPK VIKOR - @yield('title')</title>
+    <title>@yield('title')</title>
 
     <meta name="description" content="" />
 
@@ -63,152 +63,73 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('admin/assets/js/config.js') }}"></script>
-  </head>
+</head>
 
-  <body>
+<body>
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
-  <div class="layout-container">
-    <!-- Menu -->
+<div class="layout-container">
 
-    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-      <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
-          <span class="fw-bolder ms-2" style="font-size: 25px;">SPK VIKOR</span>
-        </a>
-      </div>
-
-      <div class="menu-inner-shadow"></div>
-
-      <ul class="menu-inner py-1">
-        <!-- Dashboard -->
-        <li class="menu-item">
-          <a href="home" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-            <div data-i18n="Analytics">Dashboard</div>
-          </a>
-        </li>
-        
-        <!-- Kriteria -->
-        <li class="menu-item">
-          <a href="/kriteria" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-crown"></i>
-            <div data-i18n="Boxicons">Kriteria</div>
-          </a>
-        </li>
-
-        <!-- Sub-Kriteria -->
-        <li class="menu-item">
-          <a href="/sub-kriteria" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-crown"></i>
-            <div data-i18n="Boxicons">Sub-Kriteria</div>
-          </a>
-        </li>
-
-        <!-- Alternatif -->
-        <li class="menu-item">
-          <a href="/alternatif" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-layout"></i>
-            <div data-i18n="Layouts">Alternatif</div>
-          </a>
-        </li>
-
-        <!-- Alternatif-Kriteria -->
-        <li class="menu-item">
-          <a href="/alternatif-kriteria" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-crown"></i>
-            <div data-i18n="Boxicons">Alternatif-Kriteria</div>
-          </a>
-        </li>
-
-        <!-- Perritungan -->
-        <li class="menu-item">
-          <a href="/perhitungan" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-table"></i>
-            <div data-i18n="Tables">Perhitungan</div>
-          </a>
-        </li>
-
-
-        <!-- Forms & Tables -->
-        
-      </ul>
-    </aside>
     <!-- / Menu -->
 
     <!-- Layout container -->
-    <div class="layout-page">
-      <!-- Navbar -->
-
-      <nav
-        class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-        id="layout-navbar"
-      >
+    <div class="layout-page" style="padding-left: 0px">
+    <!-- Navbar -->
+    <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
         <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-          <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
             <i class="bx bx-menu bx-sm"></i>
-          </a>
+        </a>
         </div>
 
         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-          
 
-          <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+        <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Place this tag where you want the button to render. -->
 
-            <li class="nav-item" >
-              <a  class="nav-link" href="/login/logout" onclick="return confirm('apakah anda yakin ingin keluar?')">Logout</a>
+            <li class="nav-item " >
+            <a  class="nav-link " href="login">Login</a>
             </li>
-
-            
-
             <!-- User -->
-            
             <!--/ User -->
-          </ul>
+        </ul>
         </div>
-      </nav>
+    </nav>
+<!-- / Navbar -->
+@include('pesan.index')
+@yield('content')
+<!-- Content wrapper -->
+<div class="content-wrapper">  
 
-      <!-- / Navbar -->
-  @include('pesan.index')
-  @yield('content')
-  <!-- Content wrapper -->
-  <div class="content-wrapper">  
-
-  <!-- Footer -->
-  <footer class="content-footer footer bg-footer-theme">
+<!-- Footer -->
+<footer class="content-footer footer bg-footer-theme">
     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-      <div class="mb-2 mb-md-0">
+    <div class="mb-2 mb-md-0">
         ©
         <script>
-          document.write(new Date().getFullYear());
+        document.write(new Date().getFullYear());
         </script>
         , made with ❤️ by
         <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-      </div>
-      <div>
+    </div>
+    <div>
         <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
         <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
 
-        <a
-          href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-          target="_blank"
-          class="footer-link me-4"
-          >Documentation</a
-        >
+        <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="footer-link me-4">
+            Documentation
+        </a>
 
-        <a
-          href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-          target="_blank"
-          class="footer-link me-4"
-          >Support</a
-        >
-      </div>
+        <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="footer-link me-4">
+            Support
+        </a>
     </div>
-  </footer>
-  <!-- / Footer -->
+    </div>
+</footer>
+<!-- / Footer -->
 
-  <div class="content-backdrop fade"></div>
+<div class="content-backdrop fade"></div>
 </div>
 <!-- Content wrapper -->
 </div>

@@ -54,7 +54,7 @@ class AlternatifController extends Controller
             ]);
         }
 
-        return redirect('/alternatif');
+        return redirect('/alternatif')->with('success', 'Data berhasil ditambah!');
     }
 
     /**
@@ -93,7 +93,7 @@ class AlternatifController extends Controller
         $alternatif->kode = $request->kode;
         $alternatif->nama = $request->nama;
         $alternatif->save();
-        return redirect('/alternatif');
+        return redirect('/alternatif')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -109,10 +109,12 @@ class AlternatifController extends Controller
 
         if ($alternatif != null) {
             $alternatif->delete();
-            return redirect('/alternatif');
+            return response()->json(['status' => 'Data berhasil dihapus!']);
         }
         // $alternatif->delete();
         // return redirect('/alternatif');
-        return redirect('/alternatif');
+        // return redirect('/alternatif')->with('success', 'Data berhasil dihapus!');
+
+        return response()->json(['status' => 'Data berhasil dihapus!']);
     }
 }

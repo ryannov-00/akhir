@@ -50,12 +50,12 @@ class AlternatifKriteriaController extends Controller
     {
         $alternatif = Alternatif::get();
         $kriteria = Kriteria::get();
-        foreach($kriteria as $v_k) {
+        foreach ($kriteria as $v_k) {
             $nilai = [];
-            foreach($alternatif as $v_a) {
-                $input = 'input'.$v_a->id.'|'.$v_k->id;
+            foreach ($alternatif as $v_a) {
+                $input = 'input' . $v_a->id . '|' . $v_k->id;
                 $alternatifKriteria = AlternatifKriteria::where('kriteria_id', $v_k->id)->where('alternatif_id', $v_a->id)->first();
-                if(!$alternatifKriteria) {
+                if (!$alternatifKriteria) {
                     $alternatifKriteria = new AlternatifKriteria();
                 }
                 $alternatifKriteria->nilai = $request->$input;

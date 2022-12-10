@@ -2,7 +2,7 @@
 
 @section('content')
     
-
+@section ('title') {{ 'Hasil Perhitungan' }} @endsection
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil </span> Perhitungan</h4>
@@ -11,7 +11,7 @@
 
             <div class="card">
                 <h5 class="card-header"> 
-                    Alternatif
+                    Matriks Keputusan (F)
                 </h5>
                 <div class="table-responsive text-nowrap">
                     <div class="card-body">
@@ -53,7 +53,7 @@
 
             <div class="card">
                 <h5 class="card-header"> 
-                    Normalisasi Matriks
+                    Matriks Normalisasi (N)
                 </h5>
                 <div class="table-responsive text-nowrap">
                     <div class="card-body">
@@ -95,7 +95,7 @@
 
             <div class="card">
                 <h5 class="card-header"> 
-                    Normalisasi Bobot
+                    Normalisasi Bobot (F*)
                 </h5>
                 <div class="table-responsive text-nowrap">
                     <div class="card-body">
