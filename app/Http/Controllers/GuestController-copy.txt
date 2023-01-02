@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Alternatif;
+use App\Models\AlternatifKriteria;
+use App\Models\Kriteria;
+use App\Models\SubKriteria;
+use Illuminate\Http\Request;
+
+class GuestController extends Controller
+{
+    public function index($laptop = null, $input = null)
+    {
+        $kriteria = Kriteria::with('subKriteria')->get();
+        return view('guest', compact('kriteria', 'laptop', 'input'));
+    }
+    public function filter(Request $request)
+    {
+        $input = $request->all();
+        unset($input['_token']);
+        unset($input['submit']);
+
+        $alternatif_id = [];
+        foreach ($input as $k_input => $v_input) {
+            $alternatif_kriteria = AlternatifKriteria::where('kriteria_id', $k_input)->where('nilai', $v_input)->get();
+            if ($alternatif_kriteria) {
+                foreach ($alternatif_kriteria as $v_alternatif_kriteria) {
+                    $alternatif_id[] = $v_alternatif_kriteria->id;
+                }
+            }
+        }
+        $id = array_unique($alternatif_id);
+        $laptop = Alternatif::whereIn('id', $id)->orderBy('ranking', 'ASC')->with('alternatifKriteria.kriteria')->get();
+        return GuestController::index($laptop, $input);
+    }
+}
